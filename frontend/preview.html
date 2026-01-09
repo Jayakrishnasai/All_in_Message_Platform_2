@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dailyfix Messaging - UI Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .preview-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .page-preview {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .page-title {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .mockup {
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            background: #fafafa;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .room-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .room-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .room-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .room-id {
+            font-size: 12px;
+            color: #999;
+            font-family: monospace;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .message {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .message-user {
+            font-weight: 600;
+            color: #333;
+        }
+        .message-time {
+            font-size: 12px;
+            color: #999;
+        }
+        .message-body {
+            color: #555;
+        }
+        .input-area {
+            display: flex;
+            padding: 15px 20px;
+            border-top: 1px solid #ddd;
+            gap: 10px;
+        }
+        .input-area input {
+            flex: 1;
+        }
+        .input-area button {
+            width: auto;
+            padding: 12px 24px;
+        }
+        .ai-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .ai-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .ai-button {
+            padding: 8px 16px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .ai-result {
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <h1>Dailyfix Messaging Platform - UI Preview</h1>
+
+        <!-- Login Page -->
+        <div class="page-preview">
+            <div class="page-title">Page 1: Login Page</div>
+            <div class="login-form">
+                <h2 style="text-align: center; margin-bottom: 8px;">Dailyfix Messaging</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">Login to Matrix</p>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" value="admin" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" value="admin123" readonly>
+                </div>
+                <button>Login</button>
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 4px; font-size: 12px; color: #666;">
+                    <p><strong>Default credentials:</strong></p>
+                    <p>Username: <strong>admin</strong></p>
+                    <p>Password: <strong>admin123</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rooms Page -->
+        <div class="page-preview">
+            <div class="page-title">Page 2: Rooms List</div>
+            <div class="header">
+                <h2>Rooms</h2>
+                <div>
+                    <span style="color: #666; margin-right: 15px;">@admin:localhost</span>
+                    <button style="width: auto; background: #dc3545; padding: 8px 16px;">Logout</button>
+                </div>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-name">General Chat</div>
+                    <div class="room-id">#general:localhost</div>
+                </div>
+                <div class="room-card">
+                    <div class="room-name">Support Room</div>
+                    <div class="room-id">#support:localhost</div>
+                </div>
+                <div class="room-card">
+                    <div class="room-name">Instagram DM</div>
+                    <div class="room-id">#instagram:localhost</div>
+                </div>
+                <div class="room-card">
+                    <div class="room-name">Team Discussion</div>
+                    <div class="room-id">#team:localhost</div>
+                </div>
+                <div class="room-card">
+                    <div class="room-name">Customer Inquiry</div>
+                    <div class="room-id">#customer:localhost</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Page -->
+        <div class="page-preview">
+            <div class="page-title">Page 3: Chat View</div>
+            <div class="header">
+                <span style="color: #007bff; cursor: pointer;">← Back to Rooms</span>
+                <h2>General Chat</h2>
+                <button style="width: auto; background: #28a745; padding: 8px 16px;">Show AI Features</button>
+            </div>
+            
+            <div class="ai-panel">
+                <h3 style="margin-bottom: 15px;">AI Features</h3>
+                <div class="ai-buttons">
+                    <button class="ai-button">Summarize Conversation</button>
+                    <button class="ai-button">Prioritize Messages</button>
+                    <button class="ai-button">Generate Daily Report</button>
+                </div>
+                <div class="ai-result">
+                    <h4>Summary:</h4>
+                    <p>Customer inquired about order status. Admin provided assistance and checked order details. Issue resolved satisfactorily.</p>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="messages">
+                    <div class="message">
+                        <div class="message-header">
+                            <span class="message-user">@user1:localhost</span>
+                            <span class="message-time">2024-01-15 10:30 AM</span>
+                        </div>
+                        <div class="message-body">Hello, I need help with my order</div>
+                    </div>
+                    <div class="message">
+                        <div class="message-header">
+                            <span class="message-user">@admin:localhost</span>
+                            <span class="message-time">2024-01-15 10:31 AM</span>
+                        </div>
+                        <div class="message-body">Sure, how can I assist you?</div>
+                    </div>
+                    <div class="message">
+                        <div class="message-header">
+                            <span class="message-user">@user1:localhost</span>
+                            <span class="message-time">2024-01-15 10:32 AM</span>
+                        </div>
+                        <div class="message-body">My order #12345 is delayed. This is urgent!</div>
+                    </div>
+                    <div class="message">
+                        <div class="message-header">
+                            <span class="message-user">@admin:localhost</span>
+                            <span class="message-time">2024-01-15 10:33 AM</span>
+                        </div>
+                        <div class="message-body">I'll check on that right away for you.</div>
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" placeholder="Type a message...">
+                    <button>Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Scheme -->
+        <div class="page-preview">
+            <div class="page-title">Color Scheme & Styling</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="padding: 20px; background: #007bff; color: white; border-radius: 4px; text-align: center;">
+                    Primary Blue<br>#007bff
+                </div>
+                <div style="padding: 20px; background: #28a745; color: white; border-radius: 4px; text-align: center;">
+                    Success Green<br>#28a745
+                </div>
+                <div style="padding: 20px; background: #dc3545; color: white; border-radius: 4px; text-align: center;">
+                    Danger Red<br>#dc3545
+                </div>
+                <div style="padding: 20px; background: #f5f5f5; color: #333; border-radius: 4px; text-align: center; border: 1px solid #ddd;">
+                    Background<br>#f5f5f5
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

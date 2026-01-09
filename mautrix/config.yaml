@@ -1,0 +1,55 @@
+# Mautrix Instagram Bridge Configuration
+
+homeserver:
+  address: http://synapse:8008
+  domain: localhost  # Change to your domain
+
+appservice:
+  address: http://mautrix-instagram:29318
+  hostname: 0.0.0.0
+  port: 29318
+
+database:
+  type: sqlite
+  uri: file:///data/instagram.db
+
+bridge:
+  username_format: instagram_{userid}
+  displayname_template: "{{displayname}} (Instagram)"
+  avatar_template: "{{avatar_url}}"
+  
+  # Instagram API configuration
+  # Note: For demo, OAuth is mocked
+  # In production, register app at https://developers.facebook.com/
+  instagram:
+    # OAuth credentials (mock for demo)
+    client_id: "demo_client_id"
+    client_secret: "demo_client_secret"
+    # Redirect URI: https://your-domain.com/instagram/callback
+    
+  permissions:
+    users:
+      "*": relay
+    rooms:
+      "*": user
+
+logging:
+  version: 1
+  formatters:
+    precise:
+      format: "[%(asctime)s] [%(levelname)s/%(name)s] %(message)s"
+      datefmt: "%Y-%m-%d %H:%M:%S"
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: precise
+  loggers:
+    mau:
+      level: DEBUG
+    mautrix:
+      level: DEBUG
+    mautrix.instagram:
+      level: DEBUG
+  root:
+    level: INFO
+    handlers: [console]
